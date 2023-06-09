@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container-lg{
+    width: 100%;
+    height: 850px;
+    background-color: #001632;
+}
+
+.title{
+    color: #7f8b99;
+}
+
+.passwordContainer{
+    background-color: #cff4fc;
+    height: 80px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.optContainer{
+    background-color: white;
+    height: 500px;
+    width: 300px;
+    margin: 0 auto;
+}
