@@ -1,8 +1,23 @@
 <?php
-$stringSource = "abcdefghijklmnopqrstuvwyzABCDEFGHIJKLMNOPQRSTUVWYZ";
 $numberSource = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 $symbolSource = ",.-°*<>!£$%&/()=?^+·{}";
-$number= $_GET["passwordLength"];
+
+if (isset($_GET["passwordLength"])) {
+    $passwordLength = $_GET["passwordLength"];
+}
+
+function getPassword($passwordLength)
+{
+    $finalPass = [];
+    $stringSource = "abcdefghijklmnopqrstuvwyzABCDEFGHIJKLMNOPQRSTUVWYZ";
+    $lettersArray = str_split($stringSource);
+
+    for ($i = 0; $i <= $passwordLength; $i++) {
+        $finalPass = $lettersArray[rand(1, count($lettersArray))];
+    }
+    return var_dump($finalPass);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +33,7 @@ $number= $_GET["passwordLength"];
 </head>
 
 <body>
-    <div class="container-lg">
+    <div class="container-lg mt-5">
         <div class="row w-100">
             <div class="col-12">
                 <h1 class="title text-center my-4">Strong Password Generator</h1>
@@ -30,7 +45,11 @@ $number= $_GET["passwordLength"];
             </div>
         </div>
         <div class="row">
-            <div class="passwordContainer col-11 mt-3 mb-5"></div>
+            <div class="passwordContainer col-11 mt-3 mb-5">
+                <?php if (isset($_GET["passwordLength"])) {?>
+               <?php getPassword($passwordLength);} ?> 
+                
+            </div>
         </div>
         <div class="row">
             <div class="optContainer col-11">
@@ -68,15 +87,15 @@ $number= $_GET["passwordLength"];
                             <div class="row ms-5">
                                 <div class="col-10 d-flex flex-column align-items-end px-5 mt-5 fs-4 ms-4">
                                     <div class="d-flex">
-                                        <input type="checkbox" value="letter" name="letter">
+                                        <input type="checkbox" value="true" name="letter">
                                         <label class="ms-3" for="letter">Lettere</label>
                                     </div>
                                     <div class="d-flex">
-                                        <input type="checkbox" value="number" name="number">
+                                        <input type="checkbox" value="true" name="number">
                                         <label class="ms-3" for="number">Numeri</label>
                                     </div>
                                     <div class="d-flex">
-                                        <input type="checkbox" value="symbol" name="symbol">
+                                        <input type="checkbox" value="true" name="symbol">
                                         <label class="ms-3" for="symbol">Simboli</label>
                                     </div>
 
@@ -84,8 +103,8 @@ $number= $_GET["passwordLength"];
                             </div>
                             <div class="row mt-5">
                                 <div class="col-5">
-                                <button type="submit" class="btn btn-primary me-1">Invia</button>
-                                <button type="reset" class="btn btn-secondary">Annulla</button>
+                                    <button type="submit" class="btn btn-primary me-1">Invia</button>
+                                    <button type="reset" class="btn btn-secondary">Annulla</button>
                                 </div>
                             </div>
 
