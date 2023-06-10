@@ -1,33 +1,7 @@
 <?php
 
-function checkLengthPass()
-{
-    if (isset($_GET["passwordLength"])) {
-        return $_GET["passwordLength"];
-    } else {
-        return null;
-    }
-}
+include "./functions.php";
 
-function getPassword()
-{
-    $passwordLength = checkLengthPass();
-    if ($passwordLength == null) {
-        return print_r("Nessun parametro valido inserito.");
-    }
-
-    $finalPass = [];
-    $stringSource = "abcdefghijklmnopqrstuvwyzABCDEFGHIJKLMNOPQRSTUVWYZ1234567890,.-*<>!$%&/(=?^+{}";
-    $numberSource = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-    $symbolSource = ",.-*<>!$%&/(=?^+{}";
-    $lettersArray = str_split($stringSource);
-
-    for ($i = 0; $i <= $passwordLength - 1; $i++) {
-        array_push($finalPass, $lettersArray[rand(1, (count($lettersArray) - 1))]);
-    }
-
-    return implode("", $finalPass);
-}
 
 ?>
 
@@ -80,13 +54,13 @@ function getPassword()
                                     </div>
                                     <div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="repetition" id="flexRadioDefault1" value="true">
+                                            <input class="form-check-input" type="radio" name="repetition" id="flexRadioDefault1" checked value="si">
                                             <label class="form-check-label" for="repetition">
                                                 Sì
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="repetition" id="flexRadioDefault2" value="false">
+                                            <input class="form-check-input" type="radio" name="repetition" id="flexRadioDefault2" value="no">
                                             <label class="form-check-label" for="repetition">
                                                 No
                                             </label>
