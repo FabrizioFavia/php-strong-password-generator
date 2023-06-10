@@ -1,21 +1,32 @@
 <?php
-$numberSource = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-$symbolSource = ",.-°*<>!£$%&/()=?^+·{}";
 
-if (isset($_GET["passwordLength"])) {
-    $passwordLength = $_GET["passwordLength"];
+function checkLengthPass()
+{
+    if (isset($_GET["passwordLength"])) {
+        return $_GET["passwordLength"];
+    } else {
+        return null;
+    }
 }
 
-function getPassword($passwordLength)
+function getPassword()
 {
+    $passwordLength = checkLengthPass();
+    if ($passwordLength == null) {
+        return print_r("Nessun parametro valido inserito.");
+    }
+
     $finalPass = [];
-    $stringSource = "abcdefghijklmnopqrstuvwyzABCDEFGHIJKLMNOPQRSTUVWYZ";
+    $stringSource = "abcdefghijklmnopqrstuvwyzABCDEFGHIJKLMNOPQRSTUVWYZ1234567890,.-*<>!$%&/(=?^+{}";
+    $numberSource = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    $symbolSource = ",.-*<>!$%&/(=?^+{}";
     $lettersArray = str_split($stringSource);
 
-    for ($i = 0; $i <= $passwordLength; $i++) {
-        $finalPass = $lettersArray[rand(1, count($lettersArray))];
+    for ($i = 0; $i <= $passwordLength - 1; $i++) {
+        array_push($finalPass, $lettersArray[rand(1, (count($lettersArray) - 1))]);
     }
-    return var_dump($finalPass);
+
+    return implode("", $finalPass);
 }
 
 ?>
@@ -45,10 +56,10 @@ function getPassword($passwordLength)
             </div>
         </div>
         <div class="row">
-            <div class="passwordContainer col-11 mt-3 mb-5">
-                <?php if (isset($_GET["passwordLength"])) {?>
-               <?php getPassword($passwordLength);} ?> 
-                
+            <div class="passwordContainer col-11 mt-3 mb-5 d-flex justify-content-center align-items-center fs-3">
+                <div>
+                    <?php echo getPassword() ?>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -109,6 +120,7 @@ function getPassword($passwordLength)
                             </div>
 
                         </form>
+
                     </div>
                 </div>
             </div>
