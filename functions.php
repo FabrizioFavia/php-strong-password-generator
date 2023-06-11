@@ -23,20 +23,21 @@ function getPassword()
     $symbolArray = str_split($symbolSource);
 
     for ($i = 0; $i <= $passwordLength - 1; $i++) {
-
+        $wordCheck = $lettersArray[rand(1, (count($lettersArray) - 1))];
         if ($repetition == "si") {
-            array_push($finalPassword, $lettersArray[rand(1, (count($lettersArray) - 1))]);
+            array_push($finalPassword, $wordCheck);
         } else if ($repetition == "no") {
             while (count($finalPassword) <= $passwordLength - 1) {
-                if (!in_array($lettersArray[rand(1, (count($lettersArray) - 1))], $finalPassword)) {
-                    array_push($finalPassword, $lettersArray[rand(1, (count($lettersArray) - 1))]);
+                $wordCheck = $lettersArray[rand(1, (count($lettersArray) - 1))];
+                if (!in_array($wordCheck, $finalPassword)) {
+                    array_push($finalPassword, $wordCheck);
                 }
             }
         }
     }
 
-    $a = json_encode($lettersArray[rand(1, (count($lettersArray)))]);
-    echo "<script> console.log('finalPass:',  $a)</script>";
+    $a = json_encode($wordCheck);
+    echo "<script> console.log('word',  $a)</script>";
 
     return implode("", $finalPassword);
 }
