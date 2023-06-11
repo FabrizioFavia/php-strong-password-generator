@@ -18,7 +18,7 @@ function getPassword()
     $repetitionIncluded = getCheck("repetition");
     $finalPassword = [];
     $selectedArray = [];
-    $stringSource = "abcdefghijklmnopqrstuvwyz1234567890,.-*<>!$%&/(=?^+{}";
+    $stringSource = "abcdefghijklmnopqrstuvwyz1234567890,.-*!$%&/(=?^+{}";
     $generalArray = str_split($stringSource);
     $lettersArraySlice = array_slice($generalArray, 0, 25);
     $numbersArraySlice = array_slice($generalArray, 25, 9);
