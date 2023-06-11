@@ -72,15 +72,15 @@ include "./functions.php";
                             <div class="row ms-5">
                                 <div class="col-10 d-flex flex-column align-items-end px-5 mt-5 fs-4 ms-4">
                                     <div class="d-flex">
-                                        <input type="checkbox" value="true" name="letter">
+                                        <input type="checkbox" value="si" name="letter">
                                         <label class="ms-3" for="letter">Lettere</label>
                                     </div>
                                     <div class="d-flex">
-                                        <input type="checkbox" value="true" name="number">
+                                        <input type="checkbox" value="si" name="number">
                                         <label class="ms-3" for="number">Numeri</label>
                                     </div>
                                     <div class="d-flex">
-                                        <input type="checkbox" value="true" name="symbol">
+                                        <input type="checkbox" value="si" name="symbol">
                                         <label class="ms-3" for="symbol">Simboli</label>
                                     </div>
 
