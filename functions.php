@@ -56,6 +56,11 @@ function getPassword()
             }
         }
     }
+    session_start();
+    $_SESSION["finalPassword"] = implode("", $finalPassword);
+    header('Location: location.php');
 
     return implode("", $finalPassword);
+    
+    ;
 }
